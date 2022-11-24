@@ -6,7 +6,7 @@ class Model{
     public $condb = new config;
     public $conn;
     public function OpenDb(){
-			$this->conn = new mysqli($this->condb->hostname,$this->condb->username,$this->condb->password,$this->condb->db_name);
+			$this->conn = new mysqli($this->condb->hostname, $this->condb->username, $this->condb->password, $this->condb->db_name);
 			if ($this->condb->connect_error) 
 			{
     			die("Erron in connection: " . $this->condb->connect_error);
