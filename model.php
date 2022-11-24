@@ -16,7 +16,7 @@ class Model{
     public function AddRecord($obj){
             try{
                 $this->OpenDb();
-				$query=$this->condb->prepare("INSERT INTO PCLeads (Name, PhoneNumber, EmailID, LeadFor, LeadRefStr) VALUES (?, ?, ?, ?, ?, ?)");
+				$query=$this->conn->prepare("INSERT INTO PCLeads (Name, PhoneNumber, EmailID, LeadFor, LeadRefStr) VALUES (?, ?, ?, ?, ?, ?)");
 				$query->bind_param("sssss",$obj->name, $obj->phoneNum, $obj->email, $obj->laedFor, $obj->leadRefStr);
 				$query->execute();
 				$query->close();
@@ -32,7 +32,7 @@ class Model{
     public function ReadRecord($obj){
         try{
             $this->OpenDb();
-			$query=$this->condb->prepare("SELECT * FROM PCLeads WHERE id=?");
+			$query=$this->conn->prepare("SELECT * FROM PCLeads INNER JOIN PCLeadInfo ON PCLeads.Id=PCLeadInfo.LeadID WHERE id=?");
 			$query->bind_param("i", $obj->id);
 			$query->execute();					
 			$query->close();
@@ -48,7 +48,7 @@ class Model{
     public function UpdateRecord($obj){
         try{
             $this->OpenDb();
-			$query=$this->condb->prepare("UPDATE PCLeads SET Name=?, PhoneNumber=?, EmailID=?, LeadFor=?, LeadRefStr=? WHERE id=?");
+			$query=$this->conn->prepare("UPDATE PCLeads SET Name=?, PhoneNumber=?, EmailID=?, LeadFor=?, LeadRefStr=? WHERE id=?");
 			$query->bind_param("sssssi", $obj->name, $obj->phoneNum, $obj->email, $obj->laedFor, $obj->leadRefStr, $obj->id);
 			$query->execute();					
 			$query->close();
