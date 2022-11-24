@@ -1,0 +1,42 @@
+CREATE TABLE PCLeads(
+   `Id` INTEGER PRIMARY KEY AUTO_INCREMENT,
+   `Name` VARCHAR(255) NOT NULL,
+   `PhoneNumber` VARCHAR(255),
+   `EmailID` VARCHAR(255),
+   `LeadFor` ENUM("pc", "laptop", "single component"),
+   `LeadRefStr` VARCHAR(15)
+);
+
+CREATE TABLE PCLeadInfo(
+   `Id` INTEGER PRIMARY KEY,
+   `LeadID` INTEGER,
+   `DetailsType` ENUM("detailed", "simple"),
+   `LaptopName` VARCHAR(512),
+   `YearOfRelease` VARCHAR(4),
+   `CPU` VARCHAR(512),
+   `GPU` VARCHAR(512),
+   `RAM` VARCHAR(512),
+   `SSD` VARCHAR(512),
+   `HDD` VARCHAR(512),
+   `Monitor` VARCHAR(512),
+   `Keyboard` VARCHAR(512),
+   `Mouse` VARCHAR(512),
+   `MotherBoard` VARCHAR(512),
+   `Cooler` VARCHAR(512),
+   `SMPS` VARCHAR(512),
+   `Cabinet` VARCHAR(512),
+   `Fans` VARCHAR(512),
+   `RamUpgraded` ENUM("yes", "no"),
+   `StorageUpgraded` ENUM("yes", "no"),
+   `BatteryUpgraded` ENUM("yes", "no"),
+   `DisplayUpgraded` ENUM("yes", "no"),
+   `HingeUpgraded` ENUM("yes", "no"),
+   `UpgradeInfo` TEXT,
+   `AssistDescription` TEXT,
+   `Img1` VARCHAR(255),
+   `Img2` VARCHAR(255),
+   `Img3` VARCHAR(255),
+   `Img4` VARCHAR(255),
+   `Img5` VARCHAR(255),
+   FOREIGN KEY fk_PCLead (`LeadID`) REFERENCES PCLead(`Id`) ON DELETE CASCADE
+);
