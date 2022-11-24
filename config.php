@@ -5,7 +5,7 @@ class config
     public $username;
     public $password;
     public $db_name;
-    function __construct() {
+    public function __construct() {
         //Enter your MySQL Database credentials
         $this->hostname = "";
         $this->username  = "";

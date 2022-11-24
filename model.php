@@ -32,7 +32,7 @@ class Model{
     public function ReadRecord($obj){
         try{
             $this->OpenDb();
-			$query=$this->conn->prepare("SELECT * FROM PCLeads INNER JOIN PCLeadInfo ON PCLeads.Id=PCLeadInfo.LeadID WHERE id=?");
+			$query=$this->conn->prepare("SELECT * FROM PCLeads INNER JOIN PCLeadInfo ON PCLeads.Id=PCLeadInfo.LeadID WHERE Id=?");
 			$query->bind_param("i", $obj->id);
 			$query->execute();					
 			$query->close();
@@ -48,7 +48,7 @@ class Model{
     public function UpdateRecord($obj){
         try{
             $this->OpenDb();
-			$query=$this->conn->prepare("UPDATE PCLeads SET Name=?, PhoneNumber=?, EmailID=?, LeadFor=?, LeadRefStr=? WHERE id=?");
+			$query=$this->conn->prepare("UPDATE PCLeads SET Name=?, PhoneNumber=?, EmailID=?, LeadFor=?, LeadRefStr=? WHERE Id=?");
 			$query->bind_param("sssssi", $obj->name, $obj->phoneNum, $obj->email, $obj->laedFor, $obj->leadRefStr, $obj->id);
 			$query->execute();					
 			$query->close();
@@ -64,7 +64,7 @@ class Model{
     public function DeleteRecord($obj){
         try{
             $this->OpenDb();
-			$query=$this->conn->prepare("DELETE FROM PCLeads WHERE id=?");
+			$query=$this->conn->prepare("DELETE FROM PCLeads WHERE Id=?");
 			$query->bind_param("i", $obj->id);
 			$query->execute();					
 			$query->close();
