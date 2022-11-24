@@ -32,7 +32,7 @@ class Model{
     public function ReadRecord($obj){
         try{
             $this->OpenDb();
-			$query=$this->condb->prepare("SELECT * FROM sports WHERE id=?");
+			$query=$this->condb->prepare("SELECT * FROM PCLeads WHERE id=?");
 			$query->bind_param("i", $obj->id);
 			$query->execute();					
 			$query->close();
