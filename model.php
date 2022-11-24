@@ -32,7 +32,7 @@ class Model{
     public function ReadRecord($obj){
         try{
             $this->OpenDb();
-			$query=$this->conn->prepare("SELECT * FROM PCLeads INNER JOIN PCLeadInfo ON PCLeads.Id=PCLeadInfo.LeadID WHERE Id=?");
+			$query=$this->conn->prepare("SELECT * FROM PCLeads INNER JOIN PCLeadInfo ON PCLeads.Id = PCLeadInfo.LeadID WHERE Id=?");
 			$query->bind_param("i", $obj->id);
 			$query->execute();					
 			$query->close();
